@@ -393,7 +393,7 @@ def train(args):
 
                     average_g_loss_mse = (float)(generator_loss_mse)/step
 
-                    print("the iteration {} of epcoh {}'s for pretrain G_loss_mse is: {}".format(str(step), str(epoch), str(average_g_loss_mse)))
+                    print("the iteration {} of epoch {}'s for pretrain G_loss_mse is: {}".format(str(step), str(epoch), str(average_g_loss_mse)))
 
                     if step%500 == 0:
                         random_id = randint(0, len(inference_image_list)-batch_size-1)
@@ -420,8 +420,8 @@ def train(args):
                 G_loss_accum = 0.0
 
                 # Test network
-                print('disciminator network comes in and training')
-                print("GAN training epcoh {} begins: ".format(str(epoch)))
+                print('discriminator network comes in and training')
+                print("GAN training epoch {} begins: ".format(str(epoch)))
 
                 for iter_id in np.arange(0,len(train_list),batch_size):
 
@@ -438,7 +438,7 @@ def train(args):
                     G_loss_accum += g_loss
                     average_d_loss = (float)(D_loss_accum)/step
                     average_g_loss = (float)(G_loss_accum)/step
-                    print("iteration {} of epcoh {} for GAN training's D_loss {}, G_loss {}".format(str(step),str(epoch),str(average_d_loss), str(average_g_loss)))
+                    print("iteration {} of epoch {} for GAN training's D_loss {}, G_loss {}".format(str(step),str(epoch),str(average_d_loss), str(average_g_loss)))
 
                     train_writer.add_summary(summary, epoch*len(train_list)/batch_size + iter_id)
                     step += 1
